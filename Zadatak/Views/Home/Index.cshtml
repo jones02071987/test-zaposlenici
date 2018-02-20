@@ -71,23 +71,19 @@
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 <script>
-
     $(document).ready(function () {
         $('#myTable').DataTable({
             "ajax": {
                 url: "/api/zaposlenici",
                 dataSrc: ''
             },
-
             "columns": [
                 { "data": "id" },
                 { "data": "ime" },
                 { "data": "prezime" },
                 { "data": "datumRodjenja" },
             ],
-
         });
-
         $('#zaposlenikForm').submit(function (e) {
             e.preventDefault();
             $.ajax({
@@ -103,8 +99,5 @@
                 }
             });
         });
-
-
     });
-
 </script>
