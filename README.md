@@ -1,2 +1,0 @@
-# test-zaposlenici
-Testni zadatak: 
