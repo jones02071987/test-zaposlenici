@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Zaposlenici";
+}
+@model Zaposlenik
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-2">
+            <div class="row">
+                <h2>Popis Zaposlenika</h2>
+                <table id="myTable" class="display" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Dob</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <button class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#myModal">
+                    Dodaj zaposlenika
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4>Dodaj zaposlenika</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form asp-action="Create" id="zaposlenikForm"
+                              asp-controller="Zaposlenici" method="post"
+                              asp-antiforgery="true">
+                            <label asp-for="Ime"></label>
+                            <input asp-for="Ime" class="form-control" type="text" required minlength="2" pattern="[a-žA-Ž ]{2,30}" />
+
+                            <label asp-for="Prezime"></label>
+                            <input asp-for="Prezime" class="form-control" type="text" required minlength="2" pattern="[a-žA-Ž ]{2,30}" />
+
+                            <label asp-for="DatumRodjenja"></label>
+                            <input asp-for="DatumRodjenja" class="form-control" type="date" min="1950-01-01" max="2000-01-1" value="1999-12-31" required />
+                            <hr />
+                            <button type="submit" id="submit" class="btn btn-primary">Spremi</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+<script>
+
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "ajax": {
+                url: "/api/zaposlenici",
+                dataSrc: ''
+            },
+
+            "columns": [
+                { "data": "id" },
+                { "data": "ime" },
+                { "data": "prezime" },
+                { "data": "datumRodjenja" },
+            ],
+
+        });
+
+        $('#zaposlenikForm').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/api/zaposlenici/',
+                type: 'post',
+                data: $('#zaposlenikForm').serialize(),
+                success: function () {
+                    alert('Spremljeno')
+                    location.reload();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(xhr.responseText);
+                }
+            });
+        });
+
+
+    });
+
+</script>
