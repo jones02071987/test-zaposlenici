@@ -27,7 +27,8 @@ namespace Zadatak
                     throw new System.Exception("DbSeeder not resolved");
                 }
                 Mapper.Initialize(cfg => cfg.CreateMap<Zaposlenik, ZaposlenikDto>()
-            .ForMember(dest => dest.DatumRodjenja, opt => opt.ResolveUsing(new DateResolver(new AgeCalculator()))));
+                    .ForMember(dest => dest.DatumRodjenja,
+                    opt => opt.ResolveUsing(new DateResolver(new AgeCalculator()))));
             }
 
             host.Run();

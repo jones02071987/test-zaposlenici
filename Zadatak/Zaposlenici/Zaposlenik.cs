@@ -16,7 +16,7 @@ namespace Zadatak.Models
         [StringLength(30, ErrorMessage = "Maksimalno 30 znakova"), Required]
         public string Prezime { get; set; }
 
-        [Required, DateValidation(ErrorMessage = "Nije unesen pravilan datum")]
+        [Required, AgeValidation(ErrorMessage = "Nije unesen pravilan datum")]
         [Display(Name = "Datum rođenja")]
         public DateTime? DatumRodjenja { get; set; }
     }

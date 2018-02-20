@@ -58,10 +58,6 @@ namespace Zadatak
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            //Mapper.Initialize(cfg => cfg.CreateMap<Zaposlenik, ZaposlenikDto>()
-            //.ConstructUsingServiceLocator()
-            //.ForMember(dest => dest.DatumRodjenja, opt => opt.ResolveUsing<DateResolver>()));
         }
     }
 }

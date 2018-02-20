@@ -4,7 +4,7 @@ using Zadatak.Data;
 
 namespace Zadatak.Services
 {
-    public class DateValidation : ValidationAttribute
+    public class AgeValidation : ValidationAttribute
     {
         private readonly AgeCalculator _ageCalculator = new AgeCalculator();
         private int _minAge = 18;
