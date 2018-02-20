@@ -8,7 +8,7 @@ Ispod tablice se nalazi gumb “Dodaj zaposlenika”, klikom na njega otvara se 
 •             Datum rođenja  
 Na dijalogu se nalazi I gumb “Spremi”, ukoliko je korisnik ispunio sva polja neka samo iskoči poruka “SPREMLJENO!”  
 
-Rješenje uključuje:   
+Poslano rješenje još uključuje:   
 Potrebno je samo pokrenuti aplikaciju i localDb se sam migrate-a i seed-a  
 1. client-side validation (HTML) i server side validation-Regex protiv scriptanja  
 2. Zaposlenici se spremaju u bazu podataka (Entity Framework)  
